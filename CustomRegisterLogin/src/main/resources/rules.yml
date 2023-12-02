@@ -1,0 +1,25 @@
+- name: Adult Rule
+  description: Check if a person is an adult
+  condition: age >= 18 && (city == 'New York' || city == 'London')
+  actions:
+    - action: printAdultMessage
+      params:
+        message: "The person is an adult."
+    - action: sendNotification
+      params:
+        recipient: "admin@example.com"
+        subject: "Adult Notification"
+        body: "An adult has been detected in the city."
+
+- name: Senior Citizen Rule
+  description: Check if a person is a senior citizen
+  condition: age >= 60
+  actions:
+    - action: printSeniorCitizenMessage
+      params:
+        message: "The person is a senior citizen."
+    - action: sendNotification
+      params:
+        recipient: "admin@example.com"
+        subject: "Senior Citizen Notification"
+        body: "A senior citizen has been detected in the city."

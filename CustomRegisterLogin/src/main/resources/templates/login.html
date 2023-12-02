@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<style>
+		.google-button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			background-color: #4285F4;
+			color: white;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: bold;
+		}
+
+		.google-icon {
+			margin-right: 10px;
+			font-size: 24px;
+		}
+
+
+		.google-button img {
+			float: center;
+			width: 30px;
+			vertical-align: baseline;
+			margin-top: -0.5em;
+			margin-bottom: -0.5em;
+		}
+
+		.git-button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			background-color: rgb(236, 33, 0);
+			color: white;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: bold;
+		}
+
+		.git-button img {
+			float: center;
+			width: 30px;
+			vertical-align: baseline;
+			margin-top: -0.5em;
+			margin-bottom: -0.5em;
+		}
+	</style>
+
+
+
+
+
+
+</head>
+<style>
+	.navbar {
+		background-color: cadetblue;
+	}
+</style>
+
+<body>
+
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<h1>Welcome to Web based Simple Rule Engine</h1>
+		</div>
+	</nav>
+
+
+
+
+
+	<br><br><br><br><br><br><br>
+	<div class="container">
+
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+
+				<div th:if="${param.error}">
+					<div class="alert alert-info">Either password or EmailId entered is incorrect!</div>
+				</div>
+
+				<h1>Login</h1>
+
+
+				<form th:action="@{/login}" method="post" th:object="${user}">
+
+
+
+					<div class="form-group">
+						<label class="control-label" for="email"> Email
+						</label> <input id="email" class="form-control" th:field="*{username}" required
+							autofocus="autofocus" />
+					</div>
+
+
+
+					<div class="form-group">
+						<label class="control-label" for="password">
+							Password </label> <input id="password" class="form-control" type="password"
+							th:field="*{password}" required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">
+							Log In </button>
+						<span>New User? <a href="/" th:href="@{/registration}">Register
+								here</a></span>
+					</div>
+				</form>
+
+				<div>
+
+					<button class="google-button" onclick="loginWithGoogle()">
+						<img src="${pageContext.request.contextPath}/google-logo-transparent-2.png">
+
+						Login with Google
+					</button>
+
+
+					<button class="git-button" onclick="loginWithGit()">
+						<img src="/RuleEngine/src/main/resources/templates/icon/google-logo-transparent-2.png">
+
+						Login with GitHub
+					</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<script>
+		function loginWithGoogle() {
+			window.location.href = "/oauth2/authorization/google";
+		}
+		function loginWithGit() {
+			window.location.href = "/oauth2/authorization/github";
+		}
+	</script>
+
+</body>
+
+</html>
